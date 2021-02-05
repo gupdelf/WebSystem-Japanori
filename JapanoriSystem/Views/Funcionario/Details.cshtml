@@ -1,0 +1,125 @@
+﻿@model JapanoriSystem.Models.Funcionario
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/edit(2).png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Detalhes Funcionário</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+<br />
+
+<div>
+    <h4>Funcionario &nbsp; @Html.DisplayFor(model => model.FuncionarioID)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sobrenome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sobrenome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cargo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataContratacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataContratacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailCorp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailCorp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Senha)
+        </dt>
+
+        <dd>
+
+            <!-- @Html.DisplayFor(model => model.Senha)-->
+            @{
+                string filtrado = "**********";
+            }
+            @Html.DisplayFor(model => filtrado);
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Perm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Perm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cStatus)
+        </dd>
+
+    </dl>
+</div>
+<div class="form-actions no-color">
+    @Html.ActionLink("Editar","Edit",new { id = Model.FuncionarioID},htmlAttributes: new { @class ="btn btn-success"}) | 
+    @Html.ActionLink("Voltar para lista", "Index", "", htmlAttributes: new { @class = "btn btn-default" })
+
+</div>

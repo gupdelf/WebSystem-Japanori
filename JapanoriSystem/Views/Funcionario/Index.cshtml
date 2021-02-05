@@ -1,0 +1,85 @@
+﻿@model IEnumerable<JapanoriSystem.Models.Funcionario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/list-text.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Funcionários</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.NomeCompleto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataContratacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailCorp)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeCompleto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cargo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataContratacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailCorp)
+        </td>
+
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.FuncionarioID },htmlAttributes: new { @class="btn btn-default"}) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.FuncionarioID },htmlAttributes: new { @class="btn btn-primary"}) |
+            @Html.ActionLink("Desligar", "Delete", new { id=item.FuncionarioID }, htmlAttributes: new { @class="btn btn-danger"})
+        </td>
+    </tr>
+}
+
+</table>

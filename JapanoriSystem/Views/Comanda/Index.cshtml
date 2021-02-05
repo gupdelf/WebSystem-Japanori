@@ -1,0 +1,89 @@
+﻿@model PagedList.IPagedList<JapanoriSystem.Models.Comanda>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Comandas";
+}
+
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/list-text.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Comandas</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+<br />
+
+
+@using (Html.BeginForm("Index", "Comanda", FormMethod.Get))
+{
+    <table>
+        <tr>
+            <th><h4>Código da Comanda:</h4> </th> &nbsp; &nbsp;
+            <th>@Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })</th>
+            <th><input type="submit" value="Search" class="btn btn-default" /></th>
+        </tr>
+    </table>
+}
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Código", "Index", new { sortOrder = ViewBag.CodSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Situação", "Index", new { sortOrder = ViewBag.SitSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Variedade de Produtos
+        </th>
+        <th>
+            @Html.ActionLink("Valor Total", "Index", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Situacao)
+            </td>
+            <td>
+                @{
+                    string parameterValue = item.Produtos.Where(i => i.cStatus == "Ativo").Count().ToString();
+                }
+                @Html.DisplayFor(modelItem => parameterValue)
+            </td>
+            <td>
+                R$ @Html.DisplayFor(modelItem => item.ValorTotal)
+            </td>
+            <td>
+                @Html.ActionLink("Ver mais", "Edit", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Excluir", "Delete", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+<div>
+    <div>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+    <div>
+        @Html.ActionLink("Criar Nova", "Create", "", htmlAttributes: new { @class = "btn btn-success" }) |
+        @Html.ActionLink("Inserir Produto em comanda existente", "Inserir", "", htmlAttributes: new { @class = "btn btn-default" })
+    </div>
+
+</div>

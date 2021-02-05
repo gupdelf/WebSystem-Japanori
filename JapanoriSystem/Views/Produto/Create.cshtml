@@ -1,0 +1,73 @@
+﻿@model JapanoriSystem.Models.Produto
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/add-64.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Novo Produto</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    <div class="form-horizontal">
+        
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("Nome", "", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextArea("cDesc", "", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.cDesc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Preco, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("Preco", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Preco, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @if (ViewBag.ConfErro != null && ViewBag.Success == null)
+            {
+                @ViewBag.Erro
+            }
+            @if (ViewBag.Success != null)
+            {
+                @ViewBag.Success
+            }
+        </div>
+
+        <div class="form-group">
+          
+                <input type="submit" value="Criar" class="btn btn-success" /> | 
+            
+       
+                @Html.ActionLink("Voltar para lista", "Index", "", htmlAttributes: new { @class = "btn btn-default" })
+            </div>
+        </div>
+
+}

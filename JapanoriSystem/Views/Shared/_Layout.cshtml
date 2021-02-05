@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Japanori</title>
+    <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!--link href="~/Content/chosen.min.css" rel="stylesheet" /-->
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                @Html.ActionLink("JAPANORI", "Inicio", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                @if (!(Session["usuarioLogado"] == null) || !(Session["senhaLogado"] == null))
+                {
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <img style="margin-top: 2px; width: 44px; height: 44px;" class="logo-japa" src="~/Source/Logo-japa.png" />
+                        </li>
+                        <li>@Html.ActionLink("Início", "Inicio", "Home")</li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Cadastros
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+
+                                <li>@Html.ActionLink("Produto", "Create", "Produto")</li>
+                                <li>@Html.ActionLink("Funcionário", "Create", "Funcionario")</li>
+                                <li>@Html.ActionLink("Comanda", "Create", "Comanda")</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Consultar
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+
+                                <li>@Html.ActionLink("Produtos", "Index", "Produto")</li>
+                                <li>@Html.ActionLink("Funcionários", "Index", "Funcionario")</li>
+                                <li>@Html.ActionLink("Comandas", "Index", "Comanda")</li>
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Comanda
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Inserir", "Inserir", "Comanda")</li>
+                                <li>@Html.ActionLink("Consultar", "Index", "Comanda")</li>
+                            </ul>
+                        </li>
+                        <li>
+                            @Html.ActionLink("Vendas", "Index", "Vendas")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Caixa", "CaixaIDComanda", "Caixa")
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Configurações
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Perfil","Perfil","Conta")</li>
+                                <li>@Html.ActionLink("Sair", "Logout", "Conta")</li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Login", "Login", "Conta")</li>
+                    </ul>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="container body-content" style="width:80%;">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+
+    <!--script src="~/Scripts/chosen.jquery.min.js"></!-script-->
+</body>
+</html>

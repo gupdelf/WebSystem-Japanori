@@ -1,0 +1,57 @@
+﻿@model JapanoriSystem.Models.Produto
+
+
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/list-text.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Detalhes Produto</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+<br />
+
+<div>
+    <h2>Produto &nbsp; @Html.DisplayFor(model => model.ProdutoID)</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+
+        <dd>
+            R$ @Html.DisplayFor(model => model.Preco)
+        </dd>
+
+
+    </dl>
+</div>
+<br />
+<br />
+<br />
+<br />
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ProdutoID },htmlAttributes:new { @class="btn btn-success"}) |
+    @Html.ActionLink("Voltar para Lista", "Index","",htmlAttributes: new { @class="btn btn-default"})
+</p>

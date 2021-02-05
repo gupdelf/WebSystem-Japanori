@@ -1,0 +1,51 @@
+﻿@model JapanoriSystem.Models.ProdutoComanda
+
+@{
+    ViewBag.Title = "Caixa";
+}
+
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/cashier-machine.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Caixa</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+<br />
+
+<h2>Insira o código da comanda</h2>
+@using (Html.BeginForm("Caixa", "Caixa", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        <br />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ComandaID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                @Html.TextBoxFor(model => model.ComandaID, htmlAttributes: new { id = "ComandaID", @class = "form-control" })
+
+            </div>
+        </div>
+        <br />
+       
+        @Html.ActionLink("Ir","Caixa", new { @id ="submit"},htmlAttributes: new { @class ="btn btn-success"})
+    </div>
+}
+
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#submit").click(function () {
+                document.forms[0].submit();
+                return false;
+            });
+        });
+    </script>
+}

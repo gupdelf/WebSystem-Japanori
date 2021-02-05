@@ -1,0 +1,70 @@
+﻿@model IEnumerable<JapanoriSystem.Models.ProdutoComanda>
+
+@{
+    ViewBag.Title = "Deletar";
+}
+
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/list-text.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Detalhes Comanda</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+<br />
+<br />
+
+<div class="form-horizontal">
+    <h3>Comanda @ViewBag.ID</h3>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <dl class="dl-horizontal">
+        <dt>
+            Situação
+        </dt>
+        <dd>
+            @ViewBag.Situacao
+        </dd>
+        <dt>
+            Valor Total da Comanda
+        </dt>
+        <dd>
+            <h3>R$ @ViewBag.ValorTotal</h3>
+        </dd>
+    </dl>
+    <table class="table">
+        <tr>
+            <th>Nome do Produto</th>
+            <th>Quantidade</th>
+            <th>Valor Unitário</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Produto.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Produto.Preco)
+                </td>
+            </tr>
+        }
+    </table>
+
+
+</div>
+
+<br />
+
+<div>
+    @Html.ActionLink("Voltar para Lista", "Index", "", htmlAttributes: new { @class = "btn btn-default" })
+</div>
+

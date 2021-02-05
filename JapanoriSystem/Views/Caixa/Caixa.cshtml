@@ -1,0 +1,146 @@
+﻿@model IEnumerable<JapanoriSystem.Models.ProdutoComanda>
+
+@{
+    ViewBag.Title = "Caixa";
+}
+
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/cashier-machine.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Caixa</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+<br />
+
+<h2>
+    Comanda
+    @if (ViewBag.ID != 0)
+    {
+        @ViewBag.ID
+    }
+    @if (ViewBag.ID2 != 0 && ViewBag.ID == 0)
+    {
+        @ViewBag.ID2
+    }
+</h2>
+<hr />
+<h3>
+    Total:
+    R$ @ViewBag.Total
+    @if (ViewBag.Total == null)
+    {
+        @ViewBag.Total2
+    }
+</h3>
+
+
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Produto.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </th>
+        <th>
+            Funcionário
+        </th>
+        <th>
+            Valor Unitário
+        </th>
+        <th>
+            Valor Total
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+            <td>
+                @ViewBag.nomeUsuarioLog
+            </td>
+            <td>
+                R$ @Html.DisplayFor(modelItem => item.Produto.Preco)
+            </td>
+            <td>
+                R$ @Html.DisplayFor(modelItem => item.ValorTotal)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProdutoComandaID }, htmlAttributes: new { @class = "btn btn-default" }) |
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.ProdutoComandaID }, htmlAttributes: new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+@if (ViewBag.ID != 0)
+{
+    @Html.ActionLink("Adicionar", "addProduto", new { id = ViewBag.ID }, htmlAttributes: new { @class = "btn btn-success" })
+    
+} &nbsp;
+@if (ViewBag.ID != 0)
+{
+    
+    @Html.ActionLink("Finalizar", "Finalizar", new { id = ViewBag.ID }, htmlAttributes: new { @class = "btn btn-success" })
+}
+
+@if (ViewBag.ID == 0)
+{
+    @Html.ActionLink("Adicionar", "addProduto", new { id = ViewBag.ID2 }, htmlAttributes: new { @class = "btn btn-success" })
+    
+} &nbsp;
+@if (ViewBag.ID == 0)
+{
+    
+    @Html.ActionLink("Finalizar", "Finalizar", new { id = ViewBag.ID2 }, htmlAttributes: new { @class = "btn btn-success" })
+}
+
+@*<div class="modal" tabindex="-1" role="dialog" id="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="conteudoModal"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts{
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                $(".btnEdit").click(function () {
+
+                    var id = $(this).data("value");
+
+                    $("#conteudoModal").load("/Caixa/Edit" + id,
+
+                        function () {
+                            $('#myModal').modal("show");
+                        }
+
+                    );
+
+                });
+
+            });
+
+        </script>
+        }
+*@
