@@ -15,41 +15,41 @@ suas necessidades mais urgentes para uma primeira versão. Foi usado ASP.NET MVC
 
 ## Changelog 
 
-- **v1.10.0**
+- **v1.0.0**
   - Revisão final antes da apresentação no dia 10 de dezembro de 2020
 
 &nbsp;
 
-- **v1.9.5**
+- **v0.9.1-alpha**
   - Código refinado
   - Correção de Bugs relacionados a User Experience
   
 &nbsp;
 
-- **v1.9.0**
+- **v0.9.0-alpha**
   - Caixa fechando comandas já removendo os itens cadastrados nela.
   - Implementação da tela de histórico de vendas
   
 &nbsp;
 
-- **v1.8.0**
+- **v0.8.0-alpha**
   - Design das telas aprimorado
   
 &nbsp;
 
-- **v1.6.0**
+- **v0.6.0-alpha**
   - Navegação entre telas redefinido 
   - Remoção do sistema de estoque
   
 &nbsp;
 
-- **v1.5.0**
+- **v0.5.0-alpha**
   - Implementação de funcionalidades básicas do sistema de comandas
   - Sistema de caixa totalmente funcional
   
 &nbsp;
 
-- **v1.4.0**
+- **v0.4.0-alpha**
   - Sistema de login funcionando com autenticação no banco de dados
   - Cadastro de novos funcionários, produtos e comandas
   - Consultas básicas em sistema de listas com paginação
